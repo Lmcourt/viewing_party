@@ -20,18 +20,17 @@ gem 'bcrypt'
 gem 'faraday'
 gem 'factory_bot_rails'
 gem 'faker'
+gem 'travis'
 
 
 group :development, :test do
   gem 'pry'
-  gem 'travis'
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop-rails'
-  gem 'travis'
 end
 
 group :test do
