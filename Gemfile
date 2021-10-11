@@ -15,6 +15,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'bootsnap'
 gem 'jbuilder', '~> 2.5'
+gem 'figaro'
+gem 'bcrypt'
+gem 'faraday'
+gem 'factory_bot_rails'
+gem 'faker'
+
 
 group :development, :test do
   gem 'pry'
@@ -33,6 +39,10 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+  gem 'vcr'
+  gem 'orderly'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
