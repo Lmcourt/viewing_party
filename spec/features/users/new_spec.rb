@@ -17,7 +17,7 @@ RSpec.describe 'New user' do
         click_on 'Submit'
 
         expect(User.count).to eq(1)
-        expect(current_path).to eq(dashboard_path(User.last))
+        expect(current_path).to eq(dashboard_path)
         expect(page).to have_content("Welcome #{user.email}!")
       end
     end

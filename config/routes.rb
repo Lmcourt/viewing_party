@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resource :users, only: :create
   get '/dashboard', controller: :users, action: :show
   get '/registration', controller: :users, action: :new
+
+  resources :movies, only: %i[index show]
+
+  get '/discover', to: 'discovers#index'
 end

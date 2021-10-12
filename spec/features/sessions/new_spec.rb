@@ -15,7 +15,7 @@ RSpec.describe 'User session' do
 
         click_on 'Submit'
 
-        expect(current_path).to eq(dashboard_path(user))
+        expect(current_path).to eq(dashboard_path)
         expect(page).to have_content("Welcome back, #{user.email}!")
       end
     end
