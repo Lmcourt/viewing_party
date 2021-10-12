@@ -13,7 +13,7 @@ RSpec.describe 'welcome' do
 
     it 'has registration button' do
       click_on 'Sign Up'
-      expect(current_path).to eq(register_path)
+      expect(current_path).to eq(registration_path)
     end
   end
 end

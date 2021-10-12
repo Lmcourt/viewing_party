@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get '/logout', controller: :sessions, action: :destroy
 
   resource :users, only: :create
-  get '/profile', controller: :users, action: :show
-  get '/register', controller: :users, action: :new
+  get '/dashboard', controller: :users, action: :show
+  get '/registration', controller: :users, action: :new
 end
