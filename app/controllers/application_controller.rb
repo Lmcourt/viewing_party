@@ -1,10 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :current_user, :require_user
 
   private
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def require_user
+    permission_denied unless current_user
+  end
+
+  def permission_denied
+    flash[:alert] = 'Please login or create an account.'
+    redirect_to root_path
   end
 end
