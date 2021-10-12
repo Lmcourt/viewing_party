@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_user, except: %i[new create]
+
   def new
     @user = User.new
   end
@@ -8,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Welcome #{@user.email}!"
-      redirect_to dashboard_path(@user)
+      redirect_to dashboard_path
     else
       flash[:danger] = 'Invalid credentials. Please try again.'
       redirect_to registration_path
