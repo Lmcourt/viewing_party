@@ -21,6 +21,7 @@ gem 'faraday'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'travis'
+gem 'database_cleaner'
 
 
 group :development, :test do
