@@ -9,13 +9,13 @@
         <%# link_to 'Merchant Index', merchants_path, class: 'nav-link' %>
       </div>
       <div class='navbar-nav ms-auto'>
-        <%# if current_user %>
-          <%# link_to 'Profile', profile_path, class: 'nav-link' %>
-          <%# link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
-        <%# else %>
+        <% if current_user %>
+          <%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %>
+          <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
+        <% else %>
           <%= link_to 'Login', login_path, class: 'nav-link' %>
           <%= link_to 'Sign Up', registration_path, class: 'nav-link' %>
-        <%# end %>
+        <% end %>
       </div>
     </div>
   </div>
