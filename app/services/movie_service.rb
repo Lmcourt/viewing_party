@@ -23,15 +23,16 @@ class MovieService
     private
 
     def top_movies
-      page_1 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=1')
-      page_2 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=2')
-      page_1[:results] + page_2[:results]
+      page1 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=1')
+      page2 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=2')
+      page3 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=3')
+      page1[:results] + page2[:results] + page3[:results]
     end
 
     def search_movies(title)
-      page_2 = MovieClient.fetch("/3/search/movie?&query=#{title}&page=1")
-      page_1 = MovieClient.fetch("/3/search/movie?&query=#{title}&page=2")
-      page_1[:results] + page_2[:results]
+      page1 = MovieClient.fetch("/3/search/movie?&query=#{title}&page=1")
+      page2 = MovieClient.fetch("/3/search/movie?&query=#{title}&page=2")
+      page1[:results] + page2[:results]
     end
   end
 end
