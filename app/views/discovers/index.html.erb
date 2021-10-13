@@ -1,11 +1,3 @@
 <h1>Discover Movies!</h1>
 
-<%= button_to 'Discover Top 40 Movies', movies_path, method: :get, params: { top: true }, class: 'btn btn-outline-primary' %>
-<br/>
-<%= form_with url: movies_path, method: :get, local: true do |f| %>
- <div class="form-floating mb-3">
-    <%= f.text_field :title, class: "form-control", id: "floatingInput2", placeholder: 'Movie Title' %>
-    <%= f.label :title, for: "floatingInput2" %>
-  </div>
-  <%= f.submit 'Search', class: 'btn btn-outline-primary' %>
-<% end %>
+<%= render partial: 'shared/movie_search' %>
