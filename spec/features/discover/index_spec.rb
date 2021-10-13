@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Discover Index Page' do
   let!(:user) { create :user }
-  let(:fake_movie) { MoviePoro.new({ title: 'hello', vote_average: 1 }) }
+  let(:fake_movie) { [MoviesPoro.new({ title: 'hello', vote_average: 1 })] }
 
   before :each do
     allow_any_instance_of(ApplicationController)
