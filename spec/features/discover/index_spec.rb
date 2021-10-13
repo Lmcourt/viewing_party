@@ -2,10 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Discover Index Page' do
   let!(:user) { create :user }
+  let(:fake_movie) { MoviePoro.new({ title: 'hello', vote_average: 1 }) }
 
   before :each do
     allow_any_instance_of(ApplicationController)
       .to receive(:current_user).and_return(user)
+
+    allow(MovieFacade)
+      .to receive(:movies).and_return(fake_movie)
 
     visit discover_path
   end
