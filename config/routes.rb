@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get '/dashboard', controller: :users, action: :show
   get '/registration', controller: :users, action: :new
 
-  resources :movies, only: %i[index show]
+  resources :movies, only: :index
+  scope :movies do
+    resource :details, only: :show
+  end
 
   get '/discover', to: 'discovers#index'
 end
