@@ -1,0 +1,33 @@
+<h1><%= @movie.title %></h1>
+<br>
+<div id="stats">
+  <p>Run Time: <%= @movie.runtime %></p>
+  <p>Vote Average: <%= @movie.vote_average %></p>
+  <p>Genres:
+    <ul>
+      <% @movie.genres.each do |genre| %>
+        <li><%= genre %></li>
+      <% end %>
+    </ul>
+  </p>
+</div>
+<div id="summary">
+  <p>Summary: <%= @movie.overview %></p>
+</div>
+<div id="cast">
+  <p>Cast:</p>
+  <ul>
+    <% @movie.cast.each do |person| %>
+      <li><%= person.name %> as <%= person.character %></li>
+    <% end %>
+  </ul>
+</div>
+<div id="reviews">
+  <p>Reviews:</p>
+  <ul>
+    <% @movie.reviews.each do |review| %>
+      <li><b>Author: <%= review.author %></b></li>
+      <li><%= review.content %></li>
+    <% end %>
+  </ul>
+</div>
