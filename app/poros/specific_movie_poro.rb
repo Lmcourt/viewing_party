@@ -20,6 +20,7 @@ class SpecificMoviePoro
 
   def genre_names(all_genres)
     all_genres.map do |genre|
+      
       genre[:name]
     end
   end

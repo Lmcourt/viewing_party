@@ -30,6 +30,26 @@ RSpec.describe 'Movies index page' do
   end
 
   describe 'api results' do
+    let(:cast) { build_list :cast_poro, 2 }
+    let(:reviews) { build_list :review_poro, 2 }
+    let(:genres) { [{ name: 'happy' }, { name: 'thriller' }, { name: 'romance' }] }
+    let(:data) do
+      {
+        title: 'Movie',
+        runtime: 124,
+        genres: genres,
+        summary: 'This is a weird film',
+        cast: cast,
+        reviews: reviews,
+        vote_average: 2
+      }
+    end
+    let(:movie) { SpecificMoviePoro.new(data) }
+
+    before :each do
+      allow(MovieFacade).to receive(:movie_details).and_return(movie)
+    end
+    
     it 'has title as link to movie details' do
       click_on fake_movies.first.title
 
