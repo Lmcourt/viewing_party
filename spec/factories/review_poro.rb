@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :reviews_poro do
+  factory :review_poro do
     author { Faker::Name.name }
     content { Faker::Lorem.sentence}
 
