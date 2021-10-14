@@ -1,7 +1,7 @@
 <h1><%= @movie.title %></h1>
 <br>
 
-<%# button_to "Create Viewing Party for #{@movie.title}", new_party_path, method: :get  %>
+<%= button_to "Create Viewing Party for #{@movie.title}", new_party_path, method: :get, params: { movie_info: { id: @movie.id, title: @movie.title, runtime: @movie.runtime } }, class: 'btn btn-outline-primary' %>
 <br>
 
 <div id="stats">
