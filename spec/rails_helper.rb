@@ -1,6 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'database_cleaner'
+require 'simplecov'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -38,6 +39,8 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
   c.filter_sensitive_data('<API_KEY>') { ENV['movie_api_key'] }
 end
+
+SimpleCov.start
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
