@@ -2,10 +2,15 @@ class Party < ApplicationRecord
   has_many :invitations, dependent: :destroy
   has_many :users, through: :invitations
 
-  scope :hosted, ->(user_id) {
+  scope :hosted, -> {
     joins(:invitations)
       .merge(Invitation.host)
-      .merge(Invitation.find_host(user_id))
+      .group(:id)
+  }
+
+  scope :invited, -> {
+    joins(:invitations)
+      .merge(Invitation.attendee)
       .group(:id)
   }
 end
