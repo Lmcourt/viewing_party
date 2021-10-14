@@ -13,4 +13,11 @@ class Party < ApplicationRecord
       .merge(Invitation.attendee)
       .group(:id)
   }
+
+  def formatted_duration
+    hours = duration / 60
+    minutes = duration % 60
+    one_or_more = hours > 1 ? 'hours' : 'hour'
+    "#{hours} #{one_or_more} #{minutes} minutes"
+  end
 end
