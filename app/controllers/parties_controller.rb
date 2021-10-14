@@ -1,4 +1,5 @@
 class PartiesController < ApplicationController
+  after_action :add_host, only: :create
 
   def new
     @party = Party.new
@@ -6,8 +7,8 @@ class PartiesController < ApplicationController
   end
 
   def create
-    party = Party.create!(party_params)
-    party.users << find_users(params[:party][:users])
+    @party = Party.create!(party_params)
+    @party.users << find_users(params[:party][:users]) + current_user
     flash[:success] = 'Party created!'
     redirect_to dashboard_path
   end
@@ -20,5 +21,9 @@ class PartiesController < ApplicationController
 
   def find_users(ids)
     User.find(ids[1..])
+  end
+
+  def add_host
+    @party.invitations.create_host(current_user.id)
   end
 end
