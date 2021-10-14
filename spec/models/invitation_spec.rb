@@ -30,12 +30,5 @@ RSpec.describe Invitation do
       expect(result.size).to eq(1)
       expect(result.first.user_id).to eq(users.first.id)
     end
-
-    it 'finds a host' do
-      party.invitations.create_host(users.last.id)
-      result = Invitation.find_host(users.last.id)
-      
-      expect(result).to eq(users.last.invitations)
-    end
   end
 end
