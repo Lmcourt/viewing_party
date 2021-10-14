@@ -2,15 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'new party page' do
   let(:movie_info) { { id: 12, title: 'Good film', runtime: 123 } }
-  let(:user) { double('fake user') }
+  let(:user) { create :user }
   let!(:friends) { create_list :user, 3 }
   let(:date) { Date.today + 1 }
 
   describe 'form' do
     before :each do
-      allow(user).to receive(:friends).and_return(friends)
-      allow(user).to receive(:email).and_return(Faker::Internet.email)
-      # allow(user).to receive(:id).and_return(friends.last.id)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit new_party_path(movie_info: movie_info)
     end
