@@ -30,7 +30,7 @@ RSpec.describe 'Details show page' do
     context 'stats' do
       it 'has movie stats' do
         within("#stats") do
-          expect(page).to have_content(movie.runtime)
+          expect(page).to have_content(movie.formatted_runtime)
           expect(page).to have_content(movie.vote_average)
           movie.genres.each do |genre|
             expect(page).to have_content(genre)
