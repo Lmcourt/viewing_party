@@ -24,9 +24,15 @@ RSpec.describe Party do
       end
     end
 
-    it 'finds a users hosted party' do
-      result = users.first.parties.hosted(users.first.id)
+    it 'finds a users hosted parties' do
+      result = users.first.parties.hosted
       expect(result).to eq(hosted_parties)
+    end
+
+    it 'finds parties a user is invited to' do
+      result = users.first.parties.invited
+      expected = parties - hosted_parties
+      expect(result).to eq(expected)
     end
   end
 end
