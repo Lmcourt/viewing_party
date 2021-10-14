@@ -6,6 +6,7 @@ RSpec.describe CastPoro do
   let(:genres) { [{ name: 'happy' }, { name: 'thriller' }, { name: 'romance' }] }
   let(:data) do
     {
+      id: 19404,
       title: 'Movie',
       runtime: 124,
       genres: genres,
@@ -18,6 +19,7 @@ RSpec.describe CastPoro do
   let(:movie) { SpecificMoviePoro.new(data) }
 
   it 'has attributes' do
+    expect(movie.id).to eq(19404)
     expect(movie.title).to eq('Movie')
     expect(movie.runtime).to eq(124)
     expect(movie.genres).to eq(%w[happy thriller romance])
