@@ -4,9 +4,13 @@ RSpec.describe MovieFacade, :vcr do
   describe 'multiple movies' do
     it 'returns an array of movie objects' do
       result = MovieFacade.movies({ top: true })
+      nozero = result.none? do |movie|
+        movie.vote_average == 0
+      end
       expect(result.size).to eq(40)
       expect(result).to be_a(Array)
       expect(result.first).to be_a(MoviesPoro)
+      expect(nozero).to be(true)
     end
   end
 

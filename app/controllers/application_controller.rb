@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :require_user
+  add_flash_types :success, :danger
 
   private
 
@@ -13,7 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def permission_denied
-    flash[:alert] = 'Please login or create an account.'
-    redirect_to root_path
+    redirect_to root_path, alert: 'Please login or create an account.'
   end
 end

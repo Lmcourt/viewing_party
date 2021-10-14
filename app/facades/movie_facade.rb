@@ -1,9 +1,9 @@
 class MovieFacade
   class << self
     def movies(params)
-      MovieService.movies(params).map do |movie|
-        MoviesPoro.new(movie)
-      end
+      MovieService.movies(params).filter_map do |movie|
+        MoviesPoro.new(movie) if movie[:vote_average] > 0
+      end.take(40)
     end
 
     def movie_details(movie_id)

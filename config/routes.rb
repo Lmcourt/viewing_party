@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resource :details, only: :show
   end
 
+  resources :parties, only: %i[new create]
+
   get '/discover', to: 'discovers#index'
 end

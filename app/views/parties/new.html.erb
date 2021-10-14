@@ -1,0 +1,24 @@
+
+<%= form_with model: @party, local: true do |f| %>
+  <div class="form-floating mb-3">
+    <%= f.text_field :movie_title, class: "form-control", id: "floatingInput2", value: @movie_info[:title], disabled: true %>
+    <%= f.label :movie_title, for: "floatingInput2" %>
+  </div>
+  <div class="form-floating mb-3">
+    <%= f.number_field :duration, class: "form-control", id: "floatingInput2", value: @movie_info[:runtime], min: @movie_info[:runtime], required: true %>
+    <%= f.label :duration, for: "floatingInput2" %>
+  </div>
+  <div>
+    <%= f.label :date %>
+    <%= f.date_select :date, use_short_month: true, min: Date.today + 1, required: true %>
+  </div>
+  <div>
+    <%= f.label :start_time %>
+    <%= f.time_field :start_time, required: true %>
+  </div>
+  <div>
+    <%= f.label :invite %>
+    <%= f.collection_check_boxes :users, current_user.friends, :id, :email %>
+  </div>
+  <%= f.submit 'Submit' %>
+<% end %>
