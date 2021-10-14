@@ -5,4 +5,28 @@ RSpec.describe Party do
     it { should have_many(:invitations).dependent(:destroy) }
     it { should have_many(:users).through(:invitations) }
   end
+
+  describe 'scope' do
+    let!(:users) { create_list :user, 10 }
+    let!(:parties) { create_list :party, 7 }
+    let!(:hosted_parties) { [parties[1], parties[3], parties[6]] }
+
+    before :each do
+      parties.each do |party|
+        party.users << users
+        if !hosted_parties.include?(party)
+          party.invitations.create_host(users[1..].sample.id)
+        end
+      end
+
+      hosted_parties.each do |party|
+        party.invitations.create_host(users.first.id)
+      end
+    end
+
+    it 'finds a users hosted party' do
+      result = users.first.parties.hosted(users.first.id)
+      expect(result).to eq(hosted_parties)
+    end
+  end
 end
