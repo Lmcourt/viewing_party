@@ -8,7 +8,7 @@ class PartiesController < ApplicationController
 
   def create
     @party = Party.create!(party_params)
-    @party.users << find_users(params[:party][:users]) + current_user
+    @party.users << find_users(params[:party][:users])
     flash[:success] = 'Party created!'
     redirect_to dashboard_path
   end
@@ -20,7 +20,7 @@ class PartiesController < ApplicationController
   end
 
   def find_users(ids)
-    User.find(ids[1..])
+    User.find(ids[1..]) << current_user
   end
 
   def add_host
