@@ -35,4 +35,12 @@ RSpec.describe Party do
       expect(result).to eq(expected)
     end
   end
+
+  describe 'instance methods' do
+    let!(:party) { create :party, { duration: 150 } }
+
+    it 'has a formatted duration' do
+      expect(party.formatted_duration).to eq('2 hours 30 minutes')
+    end
+  end
 end
