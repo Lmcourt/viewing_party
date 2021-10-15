@@ -23,8 +23,8 @@ class MovieService
     private
 
     def top_movies
-      page1 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=1&vote_count.gte=1000')
-      page2 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=2&vote_count.gte=1000')
+      page1 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=1&vote_count.gte=1050')
+      page2 = MovieClient.fetch('/3/discover/movie?language=en-US&sort_by=vote_average.desc&page=2&vote_count.gte=1050')
       page1[:results] + page2[:results]
     end
 
