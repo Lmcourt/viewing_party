@@ -57,31 +57,27 @@ RSpec.describe 'User show' do
       end
 
       it 'has users hosted parties' do
-        within('#hosted-parties') do
-          hosted_parties.each do |party|
-            within("#party-#{party.id}") do
-              expect(page).to have_link(party.movie_title)
-              expect(page).to have_content(party.formatted_duration)
-              expect(page).to have_content(party.date.strftime('%b %-d, %Y'))
-              expect(page).to have_content(party.start_time.strftime('%I:%M %P'))
-              expect(page).to have_content('Hosting')
-              expect(page).to_not have_content('Invited')
-            end
+        hosted_parties.each do |party|
+          within("#party-#{party.id}") do
+            expect(page).to have_link(party.movie_title)
+            expect(page).to have_content(party.formatted_duration)
+            expect(page).to have_content(party.date.strftime('%b %-d, %Y'))
+            expect(page).to have_content(party.start_time.strftime('%I:%M %P'))
+            expect(page).to have_content('Hosting')
+            expect(page).to_not have_content('Invited')
           end
         end
       end
 
       it 'has users invited parties' do
-        within('#invited-parties') do
-          invited_parties.each do |party|
-            within("#party-#{party.id}") do
-              expect(page).to have_link(party.movie_title)
-              expect(page).to have_content(party.formatted_duration)
-              expect(page).to have_content(party.date.strftime('%b %-d, %Y'))
-              expect(page).to have_content(party.start_time.strftime('%I:%M %P'))
-              expect(page).to have_content('Invited')
-              expect(page).to_not have_content('Hosting')
-            end
+        invited_parties.each do |party|
+          within("#party-#{party.id}") do
+            expect(page).to have_link(party.movie_title)
+            expect(page).to have_content(party.formatted_duration)
+            expect(page).to have_content(party.date.strftime('%b %-d, %Y'))
+            expect(page).to have_content(party.start_time.strftime('%I:%M %P'))
+            expect(page).to have_content('Invited')
+            expect(page).to_not have_content('Hosting')
           end
         end
       end
