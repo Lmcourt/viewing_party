@@ -8,6 +8,8 @@ RSpec.describe 'new party page' do
 
   describe 'form' do
     before :each do
+      user.friends << friends[1..]
+      friends.first.friends << user
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit new_party_path(movie_info: movie_info)
     end
