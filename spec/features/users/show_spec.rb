@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User show' do
+RSpec.describe 'User show', :vcr do
   describe 'requires a user' do
     it 'redirects if no user' do
       visit dashboard_path
@@ -67,6 +67,14 @@ RSpec.describe 'User show' do
             expect(page).to_not have_content('Invited')
           end
         end
+      end
+
+      it 'has link to movie show page' do
+        within("#party-#{hosted_parties.first.id}") do
+          click_on hosted_parties.first.movie_title
+        end
+        expect(current_path).to eq(details_path)
+        expect(page).to have_content('Dilwale Dulhania Le Jayenge')
       end
 
       it 'has users invited parties' do
