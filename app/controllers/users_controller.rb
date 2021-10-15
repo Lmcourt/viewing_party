@@ -17,7 +17,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @parties = current_user.parties
+  end
 
   private
 

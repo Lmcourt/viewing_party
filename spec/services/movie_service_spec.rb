@@ -4,7 +4,7 @@ RSpec.describe MovieService, :vcr do
   context 'top' do
     it 'finds top 40 movies' do
       result = MovieService.movies({ top: true })
-      expect(result.size).to eq(60)
+      expect(result.size).to eq(40)
       expect(result).to be_a(Array)
     end
   end

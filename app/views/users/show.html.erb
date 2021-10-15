@@ -3,3 +3,27 @@
 <div id='discover-button'>
   <%= button_to 'Discover Movies', discover_path, method: :get, class: 'btn btn-outline-primary' %>
 </div>
+
+<div id="hosted-parties">
+  <% @parties.hosted.each do |party| %>
+  <div id='party-<%= party.id %>'>
+    <%= link_to party.movie_title, details_path(movie_id: party.movie_id) %>
+    <%= party.formatted_duration %>
+    <%= party.date.strftime('%b %-d, %Y') %>
+    <%= party.start_time.strftime('%I:%M %P') %>
+    <p>Hosting</p>
+  </div>
+  <% end %>
+</div>
+
+<div id="invited-parties">
+  <% @parties.invited.each do |party| %>
+  <div id='party-<%= party.id %>'>
+    <%= link_to party.movie_title, details_path(movie_id: party.movie_id) %>
+    <%= party.formatted_duration %>
+    <%= party.date.strftime('%b %-d, %Y') %>
+    <%= party.start_time.strftime('%I:%M %P') %>
+    <p>Invited</p>
+  </div>
+  <% end %>
+</div>
