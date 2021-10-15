@@ -90,5 +90,40 @@ RSpec.describe 'User show', :vcr do
         end
       end
     end
+
+    describe 'friends section' do
+      let(:user) { create :user }
+      let!(:friends) { create_list :user, 3 }
+
+      before :each do
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        visit dashboard_path
+      end
+
+      it 'does not start with friends' do
+        expect(page).to have_content('You are friendless')
+      end
+
+      context 'form to add friends' do
+        it 'adds friend when the searched user exists' do
+          fill_in 'email', with: friends.first.email
+          click_on 'Add Friend'
+          expect(page).to have_content('Friend added!')
+          expect(page).to have_content(friends.first.email)
+        end
+
+        it 'does not add friend when the searched user does not exists' do
+          fill_in 'email', with: 'random@email.com'
+          click_on 'Add Friend'
+          expect(page).to have_content('Friend not found.')
+        end
+
+        it 'doesnt add friends with blank entry' do
+          fill_in 'email', with: ''
+          click_on 'Add Friend'
+          expect(page).to have_content('Friend not found.')
+        end
+      end
+    end
   end
 end
