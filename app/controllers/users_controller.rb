@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user, except: %i[new create]
+  skip_before_action :require_user, only: %i[new create]
 
   def new
     @user = User.new
