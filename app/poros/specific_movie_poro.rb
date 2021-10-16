@@ -22,8 +22,6 @@ class SpecificMoviePoro
   private
 
   def genre_names(all_genres)
-    all_genres.map do |genre|
-      genre[:name]
-    end
+    all_genres.pluck(:name)
   end
 end
