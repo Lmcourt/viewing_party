@@ -123,6 +123,17 @@ RSpec.describe 'User show', :vcr do
           click_on 'Add Friend'
           expect(page).to have_content('Friend not found.')
         end
+
+        it 'doesnt add friends twice' do
+          fill_in 'email', with: friends.first.email
+          click_on 'Add Friend'
+          expect(page).to have_content('Friend added!')
+          expect(page).to have_content(friends.first.email)
+
+          fill_in 'email', with: friends.first.email
+          click_on 'Add Friend'
+          expect(page).to have_content('You are already friends!')
+        end
       end
     end
   end

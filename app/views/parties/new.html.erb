@@ -4,6 +4,8 @@
     <%= f.text_field :movie_title, class: "form-control", id: "floatingInput2", value: @movie_info[:title], disabled: true %>
     <%= f.label :movie_title, for: "floatingInput2" %>
   </div>
+  <%= f.hidden_field :movie_title, class: "form-control", id: "floatingInput2", value: @movie_info[:title] %>
+  <%= f.hidden_field :movie_id, value: @movie_info[:id] %>
   <div class="form-floating mb-3">
     <%= f.number_field :duration, class: "form-control", id: "floatingInput2", value: @movie_info[:runtime], min: @movie_info[:runtime], required: true %>
     <%= f.label :duration, for: "floatingInput2" %>
