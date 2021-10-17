@@ -35,3 +35,18 @@
     <% end %>
   </ul>
 </div>
+<button id='showRecommendations'>Show Recommendations</button>
+<div id="recommendations" hidden>
+  <p>Recommended Movies</p>
+  <ul>
+    <% @movie.recommendations.each do |rec| %>
+      <li><%= link_to rec.title, details_path(params: { movie_id: rec.id }) %></li>
+    <% end %>
+  </ul>
+</div>
+    <script>
+      document.getElementById('showRecommendations').addEventListener('click', function() {
+        document.getElementById('showRecommendations').hidden = true;
+        document.getElementById('recommendations').hidden = false;
+      }, false);
+    </script>

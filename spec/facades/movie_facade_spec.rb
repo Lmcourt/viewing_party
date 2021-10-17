@@ -20,6 +20,7 @@ RSpec.describe MovieFacade, :vcr do
       expect(result).to be_a(SpecificMoviePoro)
       expect(result.cast.first).to be_a(CastPoro)
       expect(result.reviews.first).to be_a(ReviewPoro)
+      expect(result.recommendations.first).to be_a(RecommendationPoro)
     end
   end
 end

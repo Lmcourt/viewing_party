@@ -20,6 +20,11 @@ class MovieService
       MovieClient.fetch("/3/movie/#{movie_id}/reviews?")[:results]
     end
 
+    def recommendations(movie_id)
+      MovieClient.fetch("/3/movie/#{movie_id}/recommendations?")[:results]
+
+    end
+
     private
 
     def top_movies
