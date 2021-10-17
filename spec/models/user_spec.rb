@@ -28,5 +28,9 @@ RSpec.describe User do
     it 'has all friends' do
       expect(user.all_friends.sort_by(&:id)).to eq(friends.sort_by(&:id))
     end
+
+    it 'changes email to username' do
+      expect(user.username).to eq(user.email.split("@").first)
+    end
   end
 end
