@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   resources :friendships, only: :create
 
   get '/discover', to: 'discovers#index'
+
+  resources :chat_rooms, only: %i[new create index show]
+  mount ActionCable.server => '/cable'
 end

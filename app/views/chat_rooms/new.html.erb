@@ -1,0 +1,8 @@
+<h1>New Chat Room</h1>
+<%= link_to 'Back', chat_rooms_path, class: 'btn btn-outline-primary btn-small' %>
+
+<%= form_with model: @chat_room do |f| %>
+<%= f.label :name %>
+<%= f.text_field :title, autofocus: true, class: 'form-control' %>
+<%= f.submit 'Create' %>
+<% end %>
