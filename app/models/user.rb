@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def all_friends
     friends + inverse_friends
   end
+
+  def username
+    email.split("@").first
+  end
 end

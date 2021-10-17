@@ -1,4 +1,4 @@
-<h1><%= current_user.email.split("@")[0] %>'s Dashboard</h1>
+<h1><%= current_user.username %>'s Dashboard</h1>
 
 <div id='discover-button'>
   <%= button_to 'Discover Movies', discover_path, method: :get, class: 'btn btn-outline-primary' %>
