@@ -1,5 +1,5 @@
 class SpecificMoviePoro
-  attr_reader :id, :title, :vote_average, :runtime, :genres, :overview, :cast, :reviews, :poster_path
+  attr_reader :id, :title, :vote_average, :runtime, :genres, :overview, :cast, :reviews, :recommendations
 
   def initialize(data)
     @id = data[:id]
@@ -10,7 +10,7 @@ class SpecificMoviePoro
     @overview = data[:overview]
     @cast = data[:cast]
     @reviews = data[:reviews]
-    @poster = data[:poster_path]
+    @recommendations = data[:recommendations]
   end
 
   def formatted_runtime

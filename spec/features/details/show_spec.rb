@@ -5,6 +5,7 @@ RSpec.describe 'Details show page' do
     let(:cast) { build_list :cast_poro, 2 }
     let(:reviews) { build_list :review_poro, 2 }
     let(:genres) { [{ name: 'happy' }, { name: 'thriller' }, { name: 'romance' }] }
+    let(:recommendations) { build_list :recommendation_poro, 2 }
     let(:data) do
       {
         title: 'Movie',
@@ -13,7 +14,8 @@ RSpec.describe 'Details show page' do
         summary: 'This is a weird film',
         cast: cast,
         reviews: reviews,
-        vote_average: 2
+        vote_average: 2,
+        recommendations: recommendations
       }
     end
     let(:movie) { SpecificMoviePoro.new(data) }
@@ -64,6 +66,18 @@ RSpec.describe 'Details show page' do
       it 'has a summary' do
         within("#summary") do
           expect(page).to have_content(movie.overview)
+        end
+      end
+    end
+
+    context 'recommended movies' do
+      it 'has recommended movies' do
+        Capybara.ignore_hidden_elements = false
+        within("#recommendations") do
+          movie.recommendations.each do |rec|
+            click_on rec.title
+          expect(current_path).to eq(details_path)
+          end
         end
       end
     end
