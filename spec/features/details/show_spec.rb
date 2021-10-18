@@ -43,6 +43,7 @@ RSpec.describe 'Details show page' do
 
     context 'reviews' do
       it 'has a review author and content' do
+        Capybara.ignore_hidden_elements = false
         within("#reviews") do
           movie.reviews.each do |review|
             expect(page).to have_content(review.author)
