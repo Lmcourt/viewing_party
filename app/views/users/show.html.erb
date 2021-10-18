@@ -39,7 +39,7 @@
   <% if current_user.friends.empty? %>
     <p>You are friendless</p>
   <% else %>
-    <% current_user.friends.each do |friend| %>
+    <% current_user.all_friends.each do |friend| %>
       <%= friend.email %>
     <% end %>
   <% end %>
