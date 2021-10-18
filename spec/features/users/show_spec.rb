@@ -20,16 +20,6 @@ RSpec.describe 'User show', :vcr do
       visit dashboard_path
     end
 
-    describe 'discover movies section' do
-      it 'has a button to discover top 40 movies' do
-        within '#discover-button' do
-          click_on 'Discover Movies'
-        end
-
-        expect(current_path).to eq(discover_path)
-      end
-    end
-
     describe 'parties section' do
       let!(:user) { create :user }
       let!(:users) { create_list :user, 10 }
