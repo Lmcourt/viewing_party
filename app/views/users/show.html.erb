@@ -1,9 +1,5 @@
 <h1><%= current_user.username %>'s Dashboard</h1>
 
-<div id='discover-button'>
-  <%= button_to 'Discover Movies', discover_path, method: :get, class: 'btn btn-outline-primary' %>
-</div>
-
 <div id="hosted-parties">
   <% @parties.hosted.each do |party| %>
   <div id='party-<%= party.id %>'>
