@@ -1,0 +1,1 @@
+h1{text-align:center}body{display:flex;min-height:100vh;flex-direction:column}main{flex:1}footer{display:flex;align-self:baseline;flex-direction:row}#chat-box{padding:6px 0px;height:600px;overflow-y:auto;margin:20px 0px}

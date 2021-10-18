@@ -1,11 +1,12 @@
 <h1><%= @movie.title %></h1>
 <br>
+
 <%= button_to "Create Viewing Party for #{@movie.title}", new_party_path, method: :get, params: { movie_info: { id: @movie.id, title: @movie.title, runtime: @movie.runtime } }, class: 'btn btn-outline-primary' %>
+</div>
 <br>
 
 <div id="stats">
-  <p>Run Time: <%= @movie.formatted_runtime %></p>
-  <p>Vote Average: <%= @movie.vote_average %></p>
+  <p>Run Time: <%= @movie.formatted_runtime %> | Vote Average: <%= @movie.vote_average %></p>
   <p>Genres:
     <ul>
       <% @movie.genres.each do |genre| %>
@@ -25,16 +26,18 @@
     <% end %>
   </ul>
 </div>
-<div id="reviews">
-  <p>Reviews:</p>
+
+<button id='showReviews' class='btn btn-outline-primary'>Reviews</button>
+<div id="reviews" hidden>
+  <p>Reviews</p>
   <ul>
     <% @movie.reviews.each do |review| %>
       <li><b>Author: <%= review.author %></b></li>
-      <li><%= review.content %></li>
+      <%= review.content %>
     <% end %>
   </ul>
 </div>
-<button id='showRecommendations'>Show Recommendations</button>
+<button id='showRecommendations' class='btn btn-outline-primary'>Show Recommendations</button>
 <div id="recommendations" hidden>
   <p>Recommended Movies</p>
   <ul>
@@ -43,9 +46,15 @@
     <% end %>
   </ul>
 </div>
-    <script>
-      document.getElementById('showRecommendations').addEventListener('click', function() {
-        document.getElementById('showRecommendations').hidden = true;
-        document.getElementById('recommendations').hidden = false;
-      }, false);
-    </script>
+<script>
+  document.getElementById('showRecommendations').addEventListener('click', function() {
+    document.getElementById('showRecommendations').hidden = true;
+    document.getElementById('recommendations').hidden = false;
+  }, false);
+</script>
+<script>
+  document.getElementById('showReviews').addEventListener('click', function() {
+    document.getElementById('showReviews').hidden = true;
+    document.getElementById('reviews').hidden = false;
+  }, false);
+</script>
