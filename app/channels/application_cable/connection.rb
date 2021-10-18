@@ -16,6 +16,7 @@ module ApplicationCable
       verified_user = User.find_by(id: verified_id)
 
       return reject_unauthorized_connect unless verified_user
+
       verified_user
     end
   end
