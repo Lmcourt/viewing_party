@@ -36,7 +36,7 @@
     <%= f.submit 'Add Friend' %>
   </div>
   <% end %>
-  <% if current_user.friends.empty? %>
+  <% if current_user.all_friends.empty? %>
     <p>You are friendless</p>
   <% else %>
     <% current_user.all_friends.each do |friend| %>
