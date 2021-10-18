@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require react
+//= require react_ujs
 //= require rails-ujs
 //= require components
 //= require_tree .

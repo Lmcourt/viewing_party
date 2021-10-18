@@ -3,7 +3,7 @@ class ChatRoom extends React.Component {
         super(props);
 
         this.state = {
-            messages: props.chat_room.message,
+            messages: props.chat_room.messages,
             errors: []
         };
     }
@@ -13,19 +13,14 @@ class ChatRoom extends React.Component {
             channel: "ChatRoomsChannel",
             chat_room_id: this.props.chat_room.id,
         }, {
-            received: ({type, data}) => {
-                switch (type) {
-                    case "new_message":
-                        this.newMessage(data);
-                        break;
-                    case "errors":
-                        this.addErrors(data);
-                        break;
-                    default:
-                        console.error({type, data})
-                }
+            received: (payload) => {
+                this.newMessage(payload.message);
             }
         });
+    }
+
+    componentWillUnmout() {
+        App.chatChannel.unsubscribe()
     }
 
     newMessage(message) {
@@ -43,7 +38,7 @@ class ChatRoom extends React.Component {
                     <input ref="body" type="text" className="form-control" placeholder="Text..." />
                 </div>
                 <div className="form-group col-sm-1">
-                    <button type="submit" className="btn btn-outline-primary btn=sm"></button>
+                    <button type="submit" className="btn btn-outline-primary btn-sm">Send</button>
                 </div>
             </form>
             </div>
