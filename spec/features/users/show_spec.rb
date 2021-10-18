@@ -82,11 +82,11 @@ RSpec.describe 'User show', :vcr do
     end
 
     describe 'friends section' do
-      let(:user) { create :user }
+      let!(:user) { create :user }
       let!(:friends) { create_list :user, 3 }
 
       before :each do
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.all.first)
         visit dashboard_path
       end
 
@@ -99,6 +99,8 @@ RSpec.describe 'User show', :vcr do
           fill_in 'email', with: friends.first.email
           click_on 'Add Friend'
           expect(page).to have_content('Friend added!')
+          allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.all.first)
+          visit dashboard_path
           expect(page).to have_content(friends.first.email)
         end
 
@@ -118,6 +120,8 @@ RSpec.describe 'User show', :vcr do
           fill_in 'email', with: friends.first.email
           click_on 'Add Friend'
           expect(page).to have_content('Friend added!')
+          allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.all.first)
+          visit dashboard_path
           expect(page).to have_content(friends.first.email)
 
           fill_in 'email', with: friends.first.email
