@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Details show page' do
+  let!(:user) { create :user }
+
+  before :each do
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user).and_return :user
+  end
+
   describe 'content' do
     let(:cast) { build_list :cast_poro, 2 }
     let(:reviews) { build_list :review_poro, 2 }
