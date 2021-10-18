@@ -36,7 +36,7 @@ RSpec.describe 'Movies index page' do
     let(:recommendations) { build_list :recommendation_poro, 2 }
     let(:data) do
       {
-        title: 'Movie',
+        title: 'Chicken Run',
         runtime: 124,
         genres: genres,
         summary: 'This is a weird film',
@@ -56,7 +56,8 @@ RSpec.describe 'Movies index page' do
       click_on fake_movies.first.title
 
       expect(current_path).to eq(details_path)
-      # expect(page).to have_content(fake_movies.first.title)
+
+      expect(page).to have_content(movie.title)
     end
 
     it 'has vote average of the movie' do

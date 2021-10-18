@@ -22,7 +22,10 @@ gem 'factory_bot_rails'
 gem 'faker'
 gem 'travis'
 gem 'database_cleaner'
-
+gem 'draper'
+gem 'react-rails', '~> 1.11'
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'redis'
 
 group :development, :test do
   gem 'pry'
