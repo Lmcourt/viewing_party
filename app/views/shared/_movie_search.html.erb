@@ -2,8 +2,9 @@
 <br/>
 <%= form_with url: movies_path, method: :get, local: true do |f| %>
  <div class="form-floating mb-3">
-    <%= f.text_field :title, class: "form-control", id: "floatingInput2", placeholder: 'Movie Title' %>
+    <%= f.text_field :title, class: "form-control", id: "floatingInput2", placeholder: 'Movie Title', required: true %>
     <%= f.label :title, for: "floatingInput2" %>
   </div>
   <%= f.submit 'Search', class: 'btn btn-primary' %>
 <% end %>
+<br>
