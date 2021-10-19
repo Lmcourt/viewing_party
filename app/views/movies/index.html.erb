@@ -1,7 +1,7 @@
 <%= render partial: 'shared/movie_search' %>
 
 
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval='false'>
   <div class="carousel-inner">
     <% @movies.each_slice(5).each_with_index do |movie_group, i| %>
       <% if i == 0 %>
