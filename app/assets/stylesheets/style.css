@@ -1,5 +1,5 @@
 body {
-  background-color: #C0E0DE;
+  background-color: #FFC600;
 }
 h1 {
   color: #162521;
@@ -9,12 +9,13 @@ h2 {
 }
 h3 {
   color: #162521;
+
 }
 h5 {
   color: #162521;
 }
 a:link {
-  color:  #4F7CAC;
+  color:  #072AC8;
 }
 a:visited {
   color: #162521;
@@ -24,4 +25,25 @@ p: {
 }
 .accordian-button {
   background-color: #C0E0DE;
+}
+
+.navbar {
+  background-color: #113686;
+}
+
+.nav-link {
+  color: white
+}
+
+.btn{
+  background-color: #113686;
+  margin-top: 7px;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
 }
