@@ -38,7 +38,7 @@ class ChatRoom extends React.Component {
                     <input ref="body" type="text" className="form-control" placeholder="Text..." />
                 </div>
                 <div className="form-group col-sm-1">
-                    <button type="submit" className="btn btn-outline-primary btn-sm">Send</button>
+                    <button type="submit" className="btn btn-primary btn-sm">Send</button>
                 </div>
             </form>
             </div>

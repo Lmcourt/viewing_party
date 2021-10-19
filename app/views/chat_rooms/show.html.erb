@@ -1,4 +1,4 @@
 <h2><%= @chat_room.title %></h2>
-<p><%= link_to 'Back', chat_rooms_path, class: 'btn btn-outline-primary btn-sm' %></p>
+<p><%= link_to 'Back', chat_rooms_path, class: 'btn btn-primary btn-sm' %></p>
 
 <%= react_component('ChatRoom', { chat_room: @json_object }) %>

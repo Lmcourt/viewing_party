@@ -22,5 +22,5 @@
     <%= f.label :invite %>
     <%= f.collection_check_boxes :users, current_user.all_friends, :id, :email %>
   </div>
-  <%= f.submit 'Submit' %>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>

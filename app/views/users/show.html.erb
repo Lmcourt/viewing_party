@@ -1,35 +1,11 @@
 <h1><%= current_user.username %>'s Dashboard</h1>
 
-<div id="hosted-parties">
-  <% @parties.hosted.each do |party| %>
-  <div id='party-<%= party.id %>'>
-    <%= link_to party.movie_title, details_path(movie_id: party.movie_id) %>
-    <%= party.formatted_duration %>
-    <%= party.date.strftime('%b %-d, %Y') %>
-    <%= party.start_time.strftime('%I:%M %P') %>
-    <p>Hosting</p>
-  </div>
-  <% end %>
-</div>
-
-<div id="invited-parties">
-  <% @parties.invited.each do |party| %>
-  <div id='party-<%= party.id %>'>
-    <%= link_to party.movie_title, details_path(movie_id: party.movie_id) %>
-    <%= party.formatted_duration %>
-    <%= party.date.strftime('%b %-d, %Y') %>
-    <%= party.start_time.strftime('%I:%M %P') %>
-    <p>Invited</p>
-  </div>
-  <% end %>
-</div>
-
 <div id='friends'>
   <%= form_with url: friendships_path, local: true do |f| %>
   <div class="form-floating mb-3">
     <%= f.text_field :email, class: "form-control", id: "floatingInput2", placeholder: 'User@example.com' %>
     <%= f.label :email, for: "floatingInput2" %>
-    <%= f.submit 'Add Friend' %>
+    <%= f.submit 'Add Friend', class: 'btn btn-primary btn-sm' %>
   </div>
   <% end %>
   <% if current_user.all_friends.empty? %>
@@ -38,5 +14,61 @@
     <% current_user.all_friends.each do |friend| %>
       <%= friend.email %>
     <% end %>
+  <% end %>
+</div>
+<br/>
+<h3>Upcoming Parties</h3>
+<div class="accordion accordian-flush" id="accordionFlushExample">
+  <% @parties.hosted.each_with_index do |party, i| %>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-heading<%= i %>">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= i %>" aria-expanded="false" aria-controls="flush-collapse<%= i %>">
+        <%= party.movie_title %>: <%= party.date.strftime('%b %-d, %Y') %> - Hosting
+      </button>
+    </h2>
+    <div id="flush-collapse<%= i %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= i %>" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <p>
+        <ul>
+          <li>Movie: <%= link_to party.movie_title, details_path(movie_id: party.movie_id) %></li>
+          <li>Date: <%= party.date.strftime('%b %-d, %Y') %></li>
+          <li>Start Time: <%= party.start_time.strftime('%I:%M %P') %></li>
+          <li>Duration: <%= party.formatted_duration %></li>
+          <li>Attendees:</li>
+            <% party.users[1..].each do |user| %>
+            <ul>
+             <li><%= user.username %></li>
+            </ul>
+            <% end %>
+        </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% @parties.invited.each_with_index do |party, i| %>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-heading<%= i+100 %>">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= i+100 %>" aria-expanded="false" aria-controls="flush-collapse<%= i+100 %>">
+        <%= link_to party.movie_title, details_path(movie_id: party.movie_id) %> - <%= party.date.strftime('%b %-d, %Y') %> - Invited
+      </button>
+    </h2>
+    <div id="flush-collapse<%= i+100 %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= i+100 %>" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <ul>
+          <li>Date: <%= party.date.strftime('%b %-d, %Y') %></li>
+          <li>Start Time: <%= party.start_time.strftime('%I:%M %P') %></li>
+          <li>Duration: <%= party.formatted_duration %></li>
+          <li>
+            <ul>
+            <% party.users.each do |user| %>
+             <li><%= user.username unless user.username == current_user.username %></li>
+             <% end %>
+            </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>
