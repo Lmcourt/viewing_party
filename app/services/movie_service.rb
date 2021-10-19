@@ -22,7 +22,6 @@ class MovieService
 
     def recommendations(movie_id)
       MovieClient.fetch("/3/movie/#{movie_id}/recommendations?")[:results]
-
     end
 
     private
