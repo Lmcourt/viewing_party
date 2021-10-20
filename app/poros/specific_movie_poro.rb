@@ -1,5 +1,5 @@
 class SpecificMoviePoro
-  attr_reader :id, :title, :vote_average, :runtime, :genres, :overview, :cast, :reviews, :recommendations
+  attr_reader :id, :title, :vote_average, :runtime, :genres, :overview, :cast, :reviews, :recommendations, :poster
 
   def initialize(data)
     @id = data[:id]
@@ -11,6 +11,7 @@ class SpecificMoviePoro
     @cast = data[:cast]
     @reviews = data[:reviews]
     @recommendations = data[:recommendations]
+    @poster = poster_path(data[:poster_path])
   end
 
   def formatted_runtime
@@ -26,5 +27,9 @@ class SpecificMoviePoro
     all_genres.map do |genre|
       genre[:name]
     end
+  end
+
+  def poster_path(url)
+    "https://image.tmdb.org/t/p/w500#{url}?api_key=#{ENV['movie_api_key']}"
   end
 end
