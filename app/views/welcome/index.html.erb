@@ -4,26 +4,25 @@
 
 <% if !current_user %>
 <div class='container'>
-<div class="row justify-content-center">
-  <div class="col-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Sign Up</h5>
-        <%= render partial: 'users/form', locals: { user: User.new } %>
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Sign Up</h5>
+          <%= render partial: 'users/form', locals: { user: User.new } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Login</h5>
+          <%= render partial: 'sessions/form' %>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="col-4">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Login</h5>
-        <%= render partial: 'sessions/form' %>
-
-    </div>
-  </div>
-  </div>
-</div>
 </div>
 
 <% end %>
