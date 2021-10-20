@@ -6,6 +6,9 @@
 
 <div id="stats">
   <p>Run Time: <%= @movie.formatted_runtime %> | Vote Average: <%= @movie.vote_average %></p>
+  <div id='poster'>
+    <%= image_tag @movie.poster %>
+  </div>
   <p>Genres:
     <ul>
       <% @movie.genres.each do |genre| %>
