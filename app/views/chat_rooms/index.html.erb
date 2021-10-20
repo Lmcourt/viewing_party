@@ -13,7 +13,7 @@
               <h5 class="card-title"><%= room.title %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= room.created_at %></h6>
               <h6 class="card-subtitle mb-2 text-muted"><%= room.owner %></h6>
-              <%= button_to 'Enter Chat Room', chat_room_path(room), class: 'card-link btn btn-primary btn-sm' %>
+              <%= button_to 'Enter Chat Room', chat_room_path(room), method: :get, class: 'card-link btn btn-primary btn-sm' %>
             </div>
           </div>
         </div>
