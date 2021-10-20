@@ -33,7 +33,7 @@
 <h3 class='text-center'>Upcoming Parties</h3>
 
 <div class='container'>
-  <div class="col-md-6 left">
+  <div class="col-md-6 left" id='hosted_parties'>
     <div class="accordion accordian-flush" id="accordionFlushExample">
       <% @parties.hosted.each_with_index do |party, i| %>
       <div class="accordion-item">
@@ -64,7 +64,7 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-6 right">
+  <div class="col-md-6 right" id='invited_parties'>
     <div class="accordion accordian-flush" id="accordionFlushExample">
       <% @parties.invited.each_with_index do |party, i| %>
       <div class="accordion-item">
