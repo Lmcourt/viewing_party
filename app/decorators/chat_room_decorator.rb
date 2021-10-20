@@ -6,6 +6,6 @@ class ChatRoomDecorator < Draper::Decorator
   end
 
   def created_at
-    object.created_at.strftime("%d/%m/%Y")
+    object.created_at.strftime("%m/%d/%Y")
   end
 end
