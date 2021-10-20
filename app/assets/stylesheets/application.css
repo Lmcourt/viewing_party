@@ -59,3 +59,11 @@ footer {
   left: -30px;
   right: unset;
 }
+
+.centered {
+  text-align: center;
+}
+
+.list-group-item {
+  margin-right: 123px;
+}
