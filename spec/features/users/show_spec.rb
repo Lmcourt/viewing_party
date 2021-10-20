@@ -49,6 +49,7 @@ RSpec.describe 'User show', :vcr do
       it 'has users hosted parties' do
         hosted_parties.each do |party|
           within("#party-#{party.id}") do
+            Capybara.ignore_hidden_elements = false
             expect(page).to have_link(party.movie_title)
             expect(page).to have_content(party.formatted_duration)
             expect(page).to have_content(party.date.strftime('%b %-d, %Y'))
