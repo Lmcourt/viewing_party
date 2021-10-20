@@ -11,8 +11,21 @@
   <% if current_user.all_friends.empty? %>
     <p>You are friendless</p>
   <% else %>
-    <% current_user.all_friends.each do |friend| %>
-      <%= friend.email %>
+    <% current_user.all_friends.each_slice(4) do |friend_group| %>
+      <div class="container">
+        <div class="row">
+          <% friend_group.each do |friend| %>
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <%= image_tag friend.avatar %>
+              <div class="card-body">
+                <p class='card-text'><%= friend.email %></p>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>
