@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :movies_poro do
-    title { Faker::Movie.title }
+    title { Faker::Movie.unique.title }
     vote_average { Faker::Number.within(range: 1..10) }
     id { Faker::Number.within(range: 1..10) }
 
