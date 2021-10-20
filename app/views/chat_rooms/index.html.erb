@@ -1,12 +1,24 @@
 <h1>Chat rooms!</h1>
 
 <%= button_to 'New Chat Room', new_chat_room_path, method: :get, class: 'btn btn-primary' %>
+<br>
 
-<% @chat_rooms.each do |room| %>
-  <ul>
-    <li><%= room.title %></li>
-    <li><%= room.owner %></li>
-    <li><%= room.created_at %></li>
-    <li><%= link_to 'Enter Chat Room', chat_room_path(room) %></li>
-  </ul>
-<% end %>
+<div class="container text-center">
+  <% @chat_rooms.each_slice(4) do |room_group| %>
+    <div class="row justify-content-left">
+      <% room_group.each do |room| %>
+        <div class="col-3">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= room.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= room.created_at %></h6>
+              <h6 class="card-subtitle mb-2 text-muted"><%= room.owner %></h6>
+              <%= button_to 'Enter Chat Room', chat_room_path(room), class: 'card-link btn btn-primary btn-sm' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
+</div>
