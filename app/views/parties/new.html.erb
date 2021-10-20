@@ -18,9 +18,12 @@
     <%= f.label :start_time %>
     <%= f.time_field :start_time, required: true %>
   </div>
-  <div>
     <%= f.label :invite %>
-    <%= f.collection_check_boxes :users, current_user.all_friends, :id, :email %>
-  </div>
+    <%= f.collection_check_boxes(:users, current_user.all_friends, :id, :email) do |box| %>
+    <div class='form-check form-switch'>
+    <br>
+      <%= box.label(class: 'form-check-label', for: "flexSwitchCheck#{box.text}") { box.check_box(class: 'form-check-input', type: 'checkbox', role: 'switch', id: "flexSwitchCheck#{box.text}") + " " + box.text } %>
+    </div>
+    <% end %>
   <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
