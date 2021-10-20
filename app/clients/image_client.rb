@@ -1,16 +1,12 @@
 class ImageClient
   class << self
     def fetch
-      parse_data(conn)
+      JSON.parse(response.body, symbolize_names: true)
     end
 
     private
 
-    def parse_data(response)
-      JSON.parse(response.body, symbolize_names: true)
-    end
-
-    def conn
+    def response
       Faraday.get('https://randomfox.ca/floof/')
     end
   end
