@@ -64,7 +64,8 @@ RSpec.describe 'Details show page' do
       it 'has cast' do
         within("#cast") do
           movie.cast.each do |person|
-            expect(page).to have_content("#{person.name} as #{person.character}")
+            expect(page).to have_content(person.name)
+            expect(page).to have_content(person.character)
           end
         end
       end
