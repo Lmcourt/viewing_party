@@ -1,6 +1,6 @@
 <h1>Chat rooms!</h1>
 
-<%= link_to 'New Chat Room', new_chat_room_path, class: 'btn btn-primary btn-small' %>
+<%= button_to 'New Chat Room', new_chat_room_path, method: :get, class: 'btn btn-primary' %>
 
 <% @chat_rooms.each do |room| %>
   <ul>

@@ -33,9 +33,37 @@ footer {
   align-self: baseline;
   flex-direction: row;
 }
+
 #chat-box {
   padding:6px 0px;
   height: 600px;
   overflow-y: auto;
   margin: 20px 0px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+  width:20px;
+  height: 20px;
+  background-color: none;
+  top:calc(-20% -25%);
+  opacity:.8;
+}
+
+.carousel-control-next{
+  left: unset;
+  right: -30px;
+}
+
+.carousel-control-prev{
+  left: -30px;
+  right: unset;
+}
+
+.centered {
+  text-align: center;
+}
+
+.list-group-item {
+  margin-right: 123px;
 }

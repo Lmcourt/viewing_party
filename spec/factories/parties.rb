@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :party do
-    movie_title { "Howl's Moving Castle" }
+    movie_title { Faker::Movie.title }
     duration { 1 }
     date { Date.today }
     start_time { Time.now }

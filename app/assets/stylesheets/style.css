@@ -20,8 +20,8 @@ a:link {
 a:visited {
   color: #162521;
 }
-p: {
-  color: #3C474B;
+p {
+  color: black;
 }
 .accordian-button {
   background-color: #C0E0DE;
@@ -32,7 +32,7 @@ p: {
 }
 
 .nav-link {
-  color: white
+  color: white;
 }
 
 .btn{

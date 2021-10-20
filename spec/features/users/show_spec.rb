@@ -47,8 +47,9 @@ RSpec.describe 'User show', :vcr do
       end
 
       it 'has users hosted parties' do
-        hosted_parties.each do |party|
-          within("#party-#{party.id}") do
+        within('#hosted_parties') do
+          hosted_parties.each do |party|
+            Capybara.ignore_hidden_elements = false
             expect(page).to have_link(party.movie_title)
             expect(page).to have_content(party.formatted_duration)
             expect(page).to have_content(party.date.strftime('%b %-d, %Y'))
@@ -60,16 +61,14 @@ RSpec.describe 'User show', :vcr do
       end
 
       it 'has link to movie show page' do
-        within("#party-#{hosted_parties.first.id}") do
-          click_on hosted_parties.first.movie_title
-        end
+        click_on hosted_parties.first.movie_title
         expect(current_path).to eq(details_path)
         expect(page).to have_content('Dilwale Dulhania Le Jayenge')
       end
 
       it 'has users invited parties' do
-        invited_parties.each do |party|
-          within("#party-#{party.id}") do
+        within('#invited_parties') do
+          invited_parties.each do |party|
             expect(page).to have_link(party.movie_title)
             expect(page).to have_content(party.formatted_duration)
             expect(page).to have_content(party.date.strftime('%b %-d, %Y'))

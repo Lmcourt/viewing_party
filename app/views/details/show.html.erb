@@ -1,62 +1,76 @@
 <h1><%= @movie.title %></h1>
 <br>
 
+<div class='centered'>
 <%= button_to "Create Viewing Party for #{@movie.title}", new_party_path, method: :get, params: { movie_info: { id: @movie.id, title: @movie.title, runtime: @movie.runtime } }, class: 'btn btn-primary' %>
 <br>
-
-<div id="stats">
-  <p>Run Time: <%= @movie.formatted_runtime %> | Vote Average: <%= @movie.vote_average %></p>
-  <p>Genres:
-    <ul>
-      <% @movie.genres.each do |genre| %>
-        <li><%= genre %></li>
-      <% end %>
-    </ul>
-  </p>
-</div>
-<div id="summary">
-  <p>Summary: <%= @movie.overview %></p>
-</div>
-<div id="cast">
-  <h3>Cast</h3>
-  <table class="table table-sm table-bordered border-dark">
-    <thead>
-      <tr>
-        <th scope="col">Actor</th>
-        <th scope="col">Character</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @movie.cast.each do |cast| %>
-      <tr>
-        <td><%= cast.name %></td>
-        <td><%= cast.character %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<br>
 </div>
 
-<button id='showReviews' class='btn btn-primary'>Reviews</button>
-<br>
-<div id="reviews" hidden>
-<br>
-  <ul>
-    <% @movie.reviews.each do |review| %>
-      <li><b>Author: <%= review.author %></b></li>
-      <%= review.content %>
-    <% end %>
-  </ul>
-</div>
-<button id='showRecommendations' class='btn btn-primary'>Recommended Movies</button>
-<br>
-<div id="recommendations" hidden>
-  <br>
-  <ul>
-    <% @movie.recommendations.each do |rec| %>
-      <li><%= link_to rec.title, details_path(params: { movie_id: rec.id }) %></li>
-    <% end %>
-  </ul>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id='poster'>
+        <%= image_tag @movie.poster %>
+      </div>
+      <br>
+      <button id='showRecommendations' class='btn btn-primary'>Recommended Movies</button>
+      <br>
+      <div id="recommendations" hidden>
+        <br>
+        <ul class='list-group list-group-flush'>
+          <% @movie.recommendations.each do |rec| %>
+          <li class='list-group-item'><%= link_to rec.title, details_path(params: { movie_id: rec.id }) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div id="stats">
+        <p>Run Time: <%= @movie.formatted_runtime %> | Vote Average: <%= @movie.vote_average %></p>
+        <p>Genres:
+          <ul>
+            <% @movie.genres.each do |genre| %>
+            <li><%= genre %></li>
+            <% end %>
+          </ul>
+        </p>
+      </div>
+      <div id="summary">
+        <p>Summary: <%= @movie.overview %></p>
+      </div>
+      <div id="cast">
+        <h3>Cast</h3>
+        <table class="table table-sm table-bordered border-dark">
+          <thead>
+            <tr>
+              <th scope="col">Actor</th>
+              <th scope="col">Character</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @movie.cast.each do |cast| %>
+            <tr>
+              <td><%= cast.name %></td>
+              <td><%= cast.character %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <button id='showReviews' class='btn btn-primary'>Reviews</button>
+        <br>
+        <div id="reviews" hidden>
+          <br>
+          <ul>
+            <% @movie.reviews.each do |review| %>
+            <li><b>Author: <%= review.author %></b></li>
+            <%= review.content %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

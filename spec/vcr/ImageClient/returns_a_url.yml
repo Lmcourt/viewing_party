@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://randomfox.ca/floof/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Oct 2021 02:35:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.1.33
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - upgrade-insecure-requests
+      X-Turbo-Charged-By:
+      - LiteSpeed
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=2waB6fYi8jVQzqEcVz6Ir390eQxPwFQUl1luEsrXTjKnkT%2Fvpoi73rGF4sFUpHTFOZ5DCMgQf22godrzjv5xvv1cILtfgFbHCHDwq1IT%2BPFnLFukfqeBaw9yH27HyP8XUee7HS1aw2b5FHs%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 6a0edae5ab0330f8-ATL
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"image":"https:\/\/randomfox.ca\/images\/46.jpg","link":"https:\/\/randomfox.ca\/?i=46"}'
+  recorded_at: Wed, 20 Oct 2021 02:35:50 GMT
+recorded_with: VCR 6.0.0
