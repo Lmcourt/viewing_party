@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params.merge(avatar))
     if @user.save
-      UserMailer.with(user: @user).welcome_email.deliver_now
+      # UserMailer.with(user: @user).welcome_email.deliver_now
       session[:user_id] = @user.id
       flash[:success] = "Welcome #{@user.email}!"
       redirect_to dashboard_path
