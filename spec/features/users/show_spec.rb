@@ -125,7 +125,7 @@ RSpec.describe 'User show', :vcr do
 
           fill_in 'email', with: friends.first.email
           click_on 'Add Friend'
-          expect(page).to have_content('You are already friends!')
+          expect(page).to have_content('Invalid Friend')
         end
       end
     end
