@@ -11,12 +11,16 @@ class FriendshipsController < ApplicationController
 
   private
 
+  def valid?
+    @friend.email = current_user.email
+  end
+
   def validate_friendship
     friendship = Friendship.new(user_id: current_user.id, friend_id: @friend.id)
-    if friendship.save
+    if valid? && friendship.save
       flash[:success] = 'Friend added!'
     else
-      flash[:alert] = 'You are already friends!'
+      flash[:alert] = 'Invalid Friend'
     end
   end
 end
